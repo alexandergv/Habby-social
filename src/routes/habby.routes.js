@@ -1,10 +1,13 @@
 const express = require('express');
+const users = require('../models/UserModels/user.model')
 
 const router  = express.Router();
 
-router.get('/', (req, res) =>
+router.get('/', async (req, res) =>
 {
-    res.send('rap');
+   await users.find().then(data => {console.log(data);
+  res.send(data); 
+})
 })
 
 
