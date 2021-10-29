@@ -1,14 +1,25 @@
 const express = require('express');
-const users = require('../models/UserModels/user.model')
 
-const router  = express.Router();
+const routes  = express();
 
-router.get('/', async (req, res) =>
-{
-   await users.find().then(data => {console.log(data);
-  res.send(data); 
-})
-})
+routes.use('/user', require('./user.routes/user.routes'));
+
+routes.use('/', (req,res) => res.send("The working methods are /user."));
+// const router  = express.Router();
+
+// // router.get('/user', async (req, res) =>
+// // {
+// //    await users.find().then(data => {console.log(data);
+// //   res.send(data); 
+// // })
+// // })
+
+// router.get('/user', async (req, res) =>
+// {
+//    await users.find().then(data => {console.log(data);
+//   res.send(data); 
+// })
+// })
 
 
-module.exports = router;
+module.exports = routes;
