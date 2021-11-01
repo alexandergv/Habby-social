@@ -3,6 +3,8 @@ const express = require('express');
 const router  = express.Router();
 const users = require('../../models/UserModels/user.model');
 
+/// User management related HTTP methods
+
 router.get('/', async (req, res) => {
    await users.find().then( data => res.send(data));
 });

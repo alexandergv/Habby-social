@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('./database');
 const morgan = require('morgan');
+const path = require('path');
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use('/api/habby', require('./routes/habby.routes'));
 
 //staticfiles
+app.use('/',express.static(path.join(__dirname,'public')))
 
 //start server
 
