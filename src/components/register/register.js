@@ -49,7 +49,7 @@ constructor()
     {
         return(
             <div className="container ">
-            <h2>Inicio de sesion</h2>
+            <h2>Registo de Usuarios</h2>
                 <div className="card container blue lighten-5" >
                     <form onSubmit={this.registerUser}>
                     <div className= "card-content ">
@@ -82,4 +82,4 @@ constructor()
 
 }
 
-module.exports = Register;
+export default Register;

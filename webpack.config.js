@@ -2,19 +2,23 @@ module.exports =[ {
     entry: './src/components/index.js',
     output: {  
         path: `${__dirname}/src/public`,
-        filename:`bundle.js`
+        filename:'bundle.js',
+        publicPath: '/'
             }
         , 
     module:{
         rules: [
                 {
                 use: 'babel-loader',
-                test: /\.js/,
+                test: /\.js$/,
                 exclude: /node_modules/
                 }
                 ]        
         
-            }
+            },
+            devServer: {
+                historyApiFallback: true,
+              }
     }
 
 ]
