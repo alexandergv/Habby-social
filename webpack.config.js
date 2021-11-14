@@ -2,8 +2,9 @@ module.exports =[ {
     entry: './src/components/index.js',
     output: {  
         path: `${__dirname}/src/public`,
-        filename:'bundle.js',
-        publicPath: '/'
+        filename:'bundle.js'
+        // ,
+        // publicPath: '/'
             }
         , 
     module:{
@@ -15,10 +16,10 @@ module.exports =[ {
                 }
                 ]        
         
-            },
-            devServer: {
-                historyApiFallback: true,
-              }
+            }
+            // ,devServer: {
+            //     historyApiFallback: true,
+            //   }
     }
 
 ]

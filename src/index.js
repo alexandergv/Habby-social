@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('./database');
 const morgan = require('morgan');
 const path = require('path');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.set('port', process.env.PORT || 3000);
 //middlewares
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cookieParser());
 //routes
 
 app.use('/api/habby', require('./routes/habby.routes'));

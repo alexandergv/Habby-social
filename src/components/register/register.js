@@ -21,7 +21,7 @@ constructor()
      registerUser(e)
      {
         e.preventDefault();
-        fetch('/API/habby/user', {
+        fetch('/API/habby/user/signup', {
                 method: 'POST',
                 body: JSON.stringify(this.state),
                 headers: {
@@ -49,23 +49,23 @@ constructor()
     {
         return(
             <div className="container ">
-            <h2>Registo de Usuarios</h2>
+            <h2>Registro de Usuarios</h2>
                 <div className="card container blue lighten-5" >
                     <form onSubmit={this.registerUser}>
                     <div className= "card-content ">
                         <div className="row"> 
                             <div className="input-field col s12 "> 
-                                    <input name ="userName" className="white " onChange={this.handlechange} placeholder="Nombre de usuario"></input>
+                                    <input name ="userName" className="white " onChange={this.handlechange} placeholder="Nombre de usuario" value={this.state.userName}></input>
                             </div>
                     </div>
                         <div className="row"> 
                         <div className="input-field col s12"> 
-                                <input name='email' className="white " onChange={this.handlechange}  placeholder="Correo Electronico"></input>
+                                <input name='email' className="white " onChange={this.handlechange}  placeholder="Correo Electronico" value={this.state.email}></input>
                             </div>
                         </div>
                         <div className="row"> 
                         <div className="input-field col s12"> 
-                                <input  name='password' className="white " onChange={this.handlechange}  placeholder="Contraseña"></input>
+                                <input  name='password' className="white " onChange={this.handlechange}  placeholder="Contraseña" value={this.state.password}></input>
                             </div>
                         </div>
                         <div className="row"> 
