@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const users = require('../../models/UserModels/user.model');
 const config = require("../../config");
+
 /// User management related HTTP methods
 
 router.get('/', async (req, res) => {
@@ -29,36 +30,23 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
 
-    const token = getCookie("token", req.headers.cookie);
-     console.log(token);
-    if (token) {
-        const { email, password } = req.body;
-        const user = await users.findOne({ email: email });
-        if (!user) {
-            return res.status(404).send("the email doesn exist.");
-        }
-        const passwordIsValid = await user.validatePassword(password);
+    //  console.log(token);
+    const { email, password } = req.body;
+    const user = await users.findOne({ email: email });
+    if (!user) {
+        return res.status(404).send("the email doesn exist.");
+    }
+    const passwordIsValid = await user.validatePassword(password);
 
-        if (!passwordIsValid) {
-            return res.status(401).json({ auth: false, token: null });
-        }
-        const token = jwt.sign({ id: user._id }, config.secret, {
-            expiresIn: 60 * 60 * 24
-        });
-        res.cookie('token', token, { httpOnly: true });
-        res.json({ auth: true, token });
+    if (!passwordIsValid) {
+        return res.status(401).json({ auth: false, token: null });
     }
-    else{
-        res.json({per: 's'})
-    }
+    const token = jwt.sign({ id: user._id }, config.secret, {
+        expiresIn: 60 * 60 * 24
+    });
+    res.cookie('token', token, { httpOnly: true });
+    res.json({ auth: true, token });
 })
-
-function getCookie(name, cookies) {
-    const parts = cookies.split(`; ${name}=`);
-    return parts.pop().split(';').shift();
-  }
-
-
 
 
 module.exports = router;

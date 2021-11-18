@@ -5,8 +5,6 @@ import Register from '../register/register'
 import Home from '../home/home'
 import { Route, Switch } from 'react-router-dom';
 import Login from "../Login/login";
-import Cookies from 'js-cookie';
-import { token } from "morgan";
 
 class App extends Component {
 
@@ -18,13 +16,7 @@ class App extends Component {
         }
     }
     
-    componentDidMount() 
-    {
-        const tokenC = Cookies.get("token");
-        this.setState({token: tokenC}, ()=> {
-        console.log(this.state.token);
-        });
-    }
+
     getUserData()
     {
         
@@ -34,7 +26,7 @@ class App extends Component {
      {
          return(
              <div  >
-             <Navbar token={this.state.token}/>
+             <Navbar/>
 
                     <div className="content">
                     <Switch>
