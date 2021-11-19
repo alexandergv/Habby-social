@@ -8,7 +8,6 @@ async function verifyToken(req, res, next) {
   // if a token does not exists
   if (!token) {
     return res
-      .status(401)
       .send({ auth: false, message: "No Token aws Provided" });
   }
 

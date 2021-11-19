@@ -53,10 +53,18 @@ router.post('/login', async (req, res) => {
         await users.findById(req.userId).then(data => 
             {
                 data.password = 0;
+                data.auth = true;
                 console.log(data);
                 res.send(data);
             });
     });
+
+    router.get('/logout', verifyToken, async (req,res)=> 
+    {
+      res.clearCookie('token');
+      res.json({auth: false});
+    });
+
 
 
 module.exports = router;

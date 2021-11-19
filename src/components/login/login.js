@@ -14,6 +14,9 @@ class Login extends Component {
         this.LoginUser = this.LoginUser.bind(this);
         this.handlechange = this.handlechange.bind(this);
     }
+    componentWillUnmount() {
+            this.props.history.go();
+    }
 
     LoginUser(e) {
         e.preventDefault();
@@ -28,6 +31,8 @@ class Login extends Component {
             then(data =>
                 {
                 console.log(data.auth);
+                console.log(this.props);
+
                 this.props.history.push('/');
                 }
                 );
