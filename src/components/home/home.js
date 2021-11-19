@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 class Home extends Component {
 
-constructor()
+constructor(props)
 {
     super();
     this.state = {

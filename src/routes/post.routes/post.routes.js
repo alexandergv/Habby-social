@@ -7,7 +7,6 @@ router.get('/', async (req,res) =>
 
     await post.find()
     .then(data => {
-        console.log(data);
         res.send(data);
     });
 
@@ -19,7 +18,6 @@ router.post('/',  async (req,res) => {
    await newPost.save()
    .then(x => {
     res.send("Post Creado");
-    console.log(x);
    });
    
 });

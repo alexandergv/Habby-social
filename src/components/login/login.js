@@ -16,7 +16,6 @@ class Login extends Component {
     }
 
     LoginUser(e) {
-        console.log(this.props);
         e.preventDefault();
         fetch('/api/habby/user/login', {
             method: 'POST',

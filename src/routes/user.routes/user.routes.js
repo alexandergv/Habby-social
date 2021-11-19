@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const users = require('../../models/UserModels/user.model');
 const config = require("../../config");
-
+const verifyToken = require('../../libs/verifyToken');
 /// User management related HTTP methods
 
 router.get('/', async (req, res) => {
@@ -47,6 +47,16 @@ router.post('/login', async (req, res) => {
     res.cookie('token', token, { httpOnly: true });
     res.json({ auth: true, token });
 })
+
+    router.get('/getUser', verifyToken, async (req,res)=> 
+    {
+        await users.findById(req.userId).then(data => 
+            {
+                data.password = 0;
+                console.log(data);
+                res.send(data);
+            });
+    });
 
 
 module.exports = router;
