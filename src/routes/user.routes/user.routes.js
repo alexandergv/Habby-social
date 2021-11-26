@@ -49,7 +49,9 @@ router.post('/login', async (req, res) => {
 })
 
     router.get('/getUser', verifyToken, async (req,res)=> 
-    {
+    {   
+  console.log('x')
+
         await users.findById(req.userId).then(data => 
             {
                 data.password = 0;

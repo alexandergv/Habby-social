@@ -5,6 +5,8 @@ import Register from '../register/register'
 import Home from '../home/home'
 import { Route, Switch } from 'react-router-dom';
 import Login from "../Login/login";
+import Profile from "../profile/profile";
+import Post from "../post/post";
 
 class App extends Component {
 
@@ -26,6 +28,8 @@ class App extends Component {
                         <Route exact path="/" component={Home} />
                         <Route path="/register" component={Register} />
                         <Route path="/login" component={Login} />
+                        <Route path="/profile" component={Profile} />
+                        <Route path="/post/:id" component={Post} />
                     </Switch>
                     </div>
              </div>

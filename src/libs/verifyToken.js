@@ -3,6 +3,8 @@ const config = require("../config");
 
 
 async function verifyToken(req, res, next) {
+  console.log('c');
+
   // Get the token from the headers
   const token = req.cookies.token;
   // if a token does not exists

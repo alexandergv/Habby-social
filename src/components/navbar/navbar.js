@@ -23,7 +23,6 @@ class Navbar extends Component {
         fetch('API/habby/user/getUser')
             .then(res => res.json())
             .then(x => {
-                console.log(x)
                 if(x.auth == false)
                 {
                     this.setState({logged:<span><li><Link to="/register">Registrarse</Link></li><li><Link to="/login">Iniciar Sesion</Link></li></span>})
