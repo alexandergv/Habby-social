@@ -22,4 +22,14 @@ router.post('/',  async (req,res) => {
    
 });
 
+router.get('/:id', async (req,res) =>
+{
+    const id = req.params.id;
+    await post.findById(id)
+    .then(data => {
+        res.send(data);
+    });
+
+});
+
 module.exports = router;
